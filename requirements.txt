@@ -12,6 +12,7 @@ Flask-SQLAlchemy
 Flask-WTF
 future
 gevent
+gunicorn
 gevent-websocket
 greenlet
 idna
