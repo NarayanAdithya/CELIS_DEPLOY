@@ -1,0 +1,30 @@
+{% extends 'template.html' %}
+
+
+
+{%block body%}
+<!-- <link rel="stylesheet" href="{{url_for('static',filename='css/forumpage.css')}}"> -->
+
+<div class="container">
+  <br>
+  {% if threads %}
+  {% for thread in threads %}
+  <div class="card">
+  <h5 class="card-header">{{thread.subject}} Community</h5>
+  <div class="card-body">
+
+    <p class="card-text">{{thread.description}}</p>
+    <p class="card-text">Created by {{thread.creator.user_role}} {{thread.creator.username}}</p>
+    <a href="{{url_for('forum_',thread_id=thread.id)}}" class="btn btn-primary btn-pill">Check Out Forum</a>
+  </div>
+</div>
+<br>
+{% endfor %}
+{% else %}
+<h1>OOps Some Error Occured</h1>
+{% endif %}
+
+</div>
+<a href="{{url_for('contactus')}}"  class="btn btn-primary btn-pill">Request a new forum</a>
+
+{%endblock%}
