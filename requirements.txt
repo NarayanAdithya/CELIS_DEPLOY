@@ -3,6 +3,7 @@ click==7.1.2
 dnspython==1.16.0
 ecdsa==0.13
 email-validator
+eventlet
 Flask==1.1.2
 Flask-Compress==1.5.0
 Flask-Login==0.5.0
