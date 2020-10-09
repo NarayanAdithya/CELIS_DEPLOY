@@ -10,12 +10,7 @@
 
 
       // The http vs. https is important. Use http for localhost!
-      const domain = "localhost"; 
-      const port = 8080;
-      const io = require('socket.io');
-      const server = http.createServer();
-      server.listen(port, domain);
-      const socket = io.listen(server);
+      socket = io.connect('http://'+document.domain+':'+location.port);
       //executes after connecting
       socket.on('connect',function(){
         console.log('Yes Connection successfull');
