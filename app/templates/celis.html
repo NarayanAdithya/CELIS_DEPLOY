@@ -1,7 +1,50 @@
 {% extends 'template.html' %}
         <!--Carousel-->
 {% block body %}
-<div class="container">
+<div>
+  <div class="intro-section" id="home-section">
+      
+      <div class="slide-1" style="background-image: url('../static/images/home/home.jpg');" data-stellar-background-ratio="0.5">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-12">
+              <div class="row align-items-center">
+                <div class="col-lg-6 mb-4">
+                  <h1 data-aos="fade-side" data-aos-delay="100">Learn From The Expert</h1>
+                  <img src="../static/images/home/celislogo.png" class="w-75" data-aos="fade-up" data-aos-delay="100">
+                  <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa nulla sed quis rerum amet natus quas necessitatibus.</p>
+                  <p data-aos="fade-up" data-aos-delay="300"><a href="{{url_for('contactus')}}" class="btn btn-primary py-3 px-5 btn-pill">Contact Now</a></p>
+
+                </div>
+
+                <!--<div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
+                  <form action="" method="post" class="form-box">
+                    <h3 class="h4 text-black mb-4">Sign Up</h3>
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Email Addresss">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group mb-4">
+                      <input type="password" class="form-control" placeholder="Re-type Password">
+                    </div>
+                    <div class="form-group">
+                      <input type="submit" class="btn btn-primary btn-pill" value="Sign up">
+                    </div>
+                  </form>
+
+                </div>-->
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+ 
+<!--<div class="container">
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -10,21 +53,21 @@
           </ol>
           <div class="carousel-inner col-lg-12 col-md-12 col-sm-12 col-sx-12 ">
             <div class="carousel-item active ">
-              <img class="d-block w-100 col-sx-12" src="../static/images/home/img(11).jpg" alt="First slide">
+              <img class="d-block w-100" src="../static/images/home/img(11).jpg" alt="First slide">
               <div class="carousel-caption d-none d-md-block">
                 <h2>Discover<span class="text-danger">  The Course for you</h2>
                 <p>...</p>
               </div>
             </div>
             <div class="carousel-item ">
-              <img class="d-block w-100 col-sx-12" src="../static/images/home/img(11).jpg" alt="Second slide">
+              <img class="d-block w-100" src="../static/images/home/img(11).jpg" alt="Second slide">
               <div class="carousel-caption d-none d-md-block">
                 <h5>...</h5>
                 <p>...</p>
               </div>
             </div>
             <div class="carousel-item ">
-              <img class="d-block w-100 col-sx-12" src="../static/images/home/img(11).jpg" alt="Third slide">
+              <img class="d-block w-100" src="../static/images/home/img(11).jpg" alt="Third slide">
               <div class="carousel-caption d-none d-md-block">
                 <h5>...</h5>
                 <p>...</p>
@@ -40,7 +83,7 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-</div>
+</div>-->
 <br>
 <br>
 <!--<div class="container">
@@ -51,10 +94,74 @@
   </div>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>-->
 
-<!-- </div> -->
-<div class="row mb-5 align-items-center">
+</div>
+ <div class="site-section courses-title" id="courses-section">
+      <div class="container">
+        <div class="row mb-5 justify-content-center">
+          <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="">
+            <h2 class="section-title">Courses</h2>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="site-section" id="programs-section">
+      <div class="container">
+        <!--<div class="row mb-5 justify-content-center">
+          <div class="col-lg-7 text-center"  data-aos="fade-up" data-aos-delay="">
+            <h2 class="section-title">Our Programs</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam repellat aut neque! Doloribus sunt non aut reiciendis, vel recusandae obcaecati hic dicta repudiandae in quas quibusdam ullam, illum sed veniam!</p>
+          </div>
+        </div>-->
+        <div class="row mb-5 align-items-center">
+          <div class="col-lg-7 mb-5" data-aos="fade-up" data-aos-delay="100">
+            <img src="../static/images/home/Home_2.png" alt="Image" class="img-fluid">
+          </div>
+          <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="text-black mb-4">We Are Excellent In Education</h2>
+            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem maxime nam porro possimus fugiat quo molestiae illo.</p>
+
+            <div class="d-flex align-items-center custom-icon-wrap mb-3">
+              <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
+              <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>
+            </div>
+
+            <div class="d-flex align-items-center custom-icon-wrap">
+              <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
+              <div><h3 class="m-0">150 Universities Worldwide</h3></div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row mb-5 align-items-center">
+          <div class="col-lg-7 mb-5 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
+            <img src="../static/images/home/Home_1.png" alt="Image" class="img-fluid">
+          </div>
+          <div class="col-lg-4 mr-auto order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="text-black mb-4">Strive for Excellent</h2>
+            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem maxime nam porro possimus fugiat quo molestiae illo.</p>
+
+            <div class="d-flex align-items-center custom-icon-wrap mb-3">
+              <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
+              <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>
+            </div>
+
+            <div class="d-flex align-items-center custom-icon-wrap">
+              <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
+              <div><h3 class="m-0">150 Universities Worldwide</h3></div>
+            </div>
+
+          </div>
+        </div>
+
+        
+
+      </div>
+    </div>
+
+<<!--div class="row mb-5 align-items-center">
           <div class="col-lg-7 mb-5 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-            <img src="{{url_for('static',filename="images/undraw_youtube_tutorial.svg")}}" alt="Image" class="img-fluid w-100 ">
+            <img src="../static/images/home/undraw_youtube_tutorial.svg" alt="Image" class="img-fluid w-100 ">
           </div>
           <div class="col-lg-4 ml-auto aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
             <h2 class="text-black mb-4">We are<span class="text-info">Education<span></h2>
@@ -72,9 +179,9 @@
 
           </div>
         </div>
-    <div class="row mb-5 align-items-center">
+    <div class="row mb-5 align-items-center mx-100">
           <div class="col-lg-7 mb-5 order-1 order-lg-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-            <img src="{{url_for('static',filename="images/undraw_teaching.svg")}}" alt="Image" class="img-fluid">
+            <img src="../static/images/home/undraw_teaching.svg" alt="Image" class="img-fluid">
           </div>
           <div class="col-lg-4 mr-auto order-2 order-lg-1 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
             <h2 class="text-black mb-4">Strive for <span class="text-info">Excellence</span></h2>
@@ -91,6 +198,6 @@
             </div>
 
           </div>
-        </div>
+        </div>-->
 
 {% endblock %}

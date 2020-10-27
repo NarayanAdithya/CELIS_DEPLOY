@@ -7,4 +7,7 @@
   color:blue;
   margin-top: 10px;
   margin-bottom: 10px;
-}
+}      
+.scrollbar::-webkit-scrollbar {
+        display: none;
+      }

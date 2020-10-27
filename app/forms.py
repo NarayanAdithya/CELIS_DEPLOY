@@ -10,7 +10,7 @@ class RegisterForm(FlaskForm):
     password=PasswordField('Password',validators=[DataRequired()],render_kw={'class':'form-control form-group'})
     conpassword=PasswordField('Re-Enter Password',validators=[DataRequired(),EqualTo('password')],render_kw={'class':'form-control form-group'})#('values','label')
     user_role=RadioField('User Role',validators=[DataRequired()],choices=[('Student','Student'),('Instructor','Instructor')],render_kw={'class':'form-check form-check-input','style':'list-style:none;'})
-    Region=SelectField('Select Region',validators=[(DataRequired())],choices=[('USA','USA'),('India','India'),('America','America')],render_kw={'class':'form-group col-md-4 form-control '})
+    Region=SelectField('Select Region',validators=[(DataRequired())],choices=[('America','America'),('Africa','Africa'),('Asia','Asia'),('Europe','Europe')],render_kw={'class':'form-group col-md-4 form-control '})
     # remember_me=BooleanField('Keep Me Signed In')
     submit=SubmitField('Sign In',render_kw={'class':'btn btn-primary','style':'height : 50px;'})
     def validate_username(self,username):

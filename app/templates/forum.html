@@ -26,7 +26,7 @@
       });
       //sets left
       socket.on('left_room_announcement',function(data){
-        document.getElementById('posts').innerHTML+="<div>"+data['username']+"just left "+data['room']+"</div><br>";
+        document.getElementById('posts').innerHTML+="<div>"+data['username']+" just left "+data['room']+"</div><br>";
         console.log("{{current_user.username}}"+" Left "+data['room']);
       });
       //submit on enter

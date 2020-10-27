@@ -6,10 +6,11 @@ from app.models import User,thread,post
 from app.forms import LoginForm,RegisterForm
 from werkzeug.urls import url_parse
 from wtforms.validators import ValidationError
+
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('celis.html',title='Home')
+    return render_template('celis.html',title='Home',data_footer_aos="fade-left",data_aos_footer_delay=100,data_aos_header="fade-left",data_header_aos_delay=100)
 
 @app.route('/courses')
 @login_required

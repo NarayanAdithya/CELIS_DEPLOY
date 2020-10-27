@@ -5,33 +5,61 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.js" integrity="sha512-4WpSQe8XU6Djt8IPJMGD9Xx9KuYsVCEeitZfMhPi8xdYlVA5hzRitm0Nt1g2AZFS136s29Nq4E4NVvouVAVrBw==" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.1/socket.io.js" integrity="sha512-AcZyhRP/tbAEsXCCGlziPun5iFvcSUpEz2jKkx0blkYKbxU81F+iq8FURwPn1sYFeksJ+sDDrI5XujsqSobWdQ==" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="../static/css/styles.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
 
-      </head>
-    <body style="margin-top: 60px;">
-      <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/jquery-ui.css">
+    <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="../static/css/jquery.fancybox.min.css">
+
+    <link rel="stylesheet" href="../static/css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="../static/css/aos.css">
+
+    <link rel="stylesheet" href="../static/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+body  {
+   background-color: white; /* For browsers that do not support gradients */
+  /*background-image: url('../static/images/home/img(11).jpg');*/
+}
+</style>
+ </head>
+  
+ <body  body style="margin-top: 60px; width: 100%; height:100vh;/* background-image: url('../static/images/home/hero_1.jpg'); background-position:center;background-size: cover; position: relative; background-repeat: repeat-x;">
+   <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-blue w-65 " data-aos="{{data_aos_header}}" data-aos-delay="{{data_header_aos_delay}}">
         <a class="navbar-brand" href="{{url_for('index')}}">
-    <img src="../static/images/celislogo.png" width="70" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+    <img src="../static/images/celislogo.png" width="140" height="60" class="d-inline-block align-top" alt="" loading="lazy">
 
     </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 
             <li class="nav-item ">
               <a class="nav-link" href="{{url_for('index')}}">Home </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{url_for('course')}}">Courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('forum')}}">Forum</a>
             </li>
             {% if current_user.is_anonymous %}
             <li class="nav-item">
@@ -48,29 +76,22 @@
         Hey, {{current_user.username}}
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="{{url_for('profile')}}">Profile</a>
+        <a class="dropdown-item" href="#">Profile</a>
         <a class="dropdown-item" href="#">Discussion Forums</a>
         <a class="dropdown-item" href="#">Settings</a>
       </div>
 
     </li>
             {% endif %}
-            <li class="nav-item">
-              <a class="nav-link" href="{{url_for('forum')}}">Forum</a>
-            </li>
+            
           </ul>
-          <form class="form-inline ml-auto">
-        <div class="md-form my-0">
-          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-        </div>
-        <button href="#!" class="btn btn-info btn-pill btn-md my-0 ml-sm-2" type="submit">Search</button>
-      </form>
-
         </div>
       </nav>
       {% with messages=get_flashed_messages(with_categories=true) %}
       {% if messages %}
         {%for category,message in messages%}
+        <br>
+        <br>
         <div class="container">
           <div class="alert alert-{{category}} alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="close" name="button"><span aria-hidden="true">&times;</span></button>
@@ -89,10 +110,10 @@
 
 
  {% endblock %}
+ 
 
               <!-- Footer -->
-              <!-- Footer -->
-              <footer class="page-footer font-small black pt-4 bottom">
+              <footer class="page-footer font-small black pt-4 bottom" data-aos="{{data_footer_aos}}" data-aos-delay="{{data_aos_footer_delay}}">
                   <div class="wrapper">
                     <!-- Footer Links -->
                     <div class="container-fluid text-center text-md-left">
@@ -107,6 +128,7 @@
                           <h5 class="text-uppercase">Interested In Working With Us?</h5>
                           <button type="" class="footbut" name="button">Let's Talk</button>
                           <p></p>
+                          <br>
                           <p>About Us</p>
                           <p>Contact Us</p>
                           <p>Help and Support</p>
@@ -116,6 +138,7 @@
                         <!-- Grid column -->
 
                         <hr class="clearfix w-100 d-md-none ">
+                        <br>
 
                         <!-- Grid column -->
                         <div class="col-md-3 mx-auto">
@@ -179,16 +202,16 @@
                             <br>
                             <br>
                             <li>
-                              <a href="#!">LinkedIn</a>
-                            </li>
-                            <li>
-                              <a href="#!">Github</a>
-                            </li>
-                            <li>
-                              <a href="#!">Instagram</a>
+                              <a href="#!"><i class="fa fa-linkedin text-light h1 "></i></a>
                             </li>
                             <li>
                               <a href="#!"></a>
+                            </li>
+                            <li>
+                              <a href="#!"><i class="fa fa-github text-light h1 d-block"></i></a>
+                            </li>
+                            <li>
+                              <a href="#!"><i class="fa fa-instagram text-light h1 d-block"></i></a>
                             </li>
                           </ul>
 
@@ -206,20 +229,29 @@
                       <a href="https://mdbootstrap.com/"> CELIS </a>
                     </div>
                     <!-- Copyright -->
-
                   </div>
-
-
               </footer>
               <!-- Footer -->
 
 
 
 
+  <script src="../static/js/jquery-3.3.1.min.js"></script>
+  <script src="../static/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="../static/js/jquery-ui.js"></script>
+  <script src="../static/js/popper.min.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/owl.carousel.min.js"></script>
+  <script src="../static/js/jquery.stellar.min.js"></script>
+  <script src="../static/js/jquery.countdown.min.js"></script>
+  <script src="../static/js/bootstrap-datepicker.min.js"></script>
+  <script src="../static/js/jquery.easing.1.3.js"></script>
+  <script src="../static/js/aos.js"></script>
+  <script src="../static/js/jquery.fancybox.min.js"></script>
+  <script src="../static/js/jquery.sticky.js"></script>
 
-
-
-
-
-          </body>
-      </html>
+  
+  <script src="../static/js/main.js"></script>
+    
+ </body>
+</html>
