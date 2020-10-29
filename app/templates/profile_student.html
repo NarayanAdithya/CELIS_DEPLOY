@@ -6,7 +6,7 @@
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Activity</a>
           <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-          <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Courses</a>
+          <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Courses Enrolled</a>
         </div>
       </nav>
       <div class="tab-content" id="nav-tabContent">
@@ -125,7 +125,31 @@
 
         </div>
         
-        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+          <div class="container">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Course Code</th>
+                  <th scope="col">Course Name</th>
+                  <th scope="col">Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for course in courses %}
+                <tr>
+                  <th scope="row">{{loop.index}}</th>
+                  <td>{{course.course_code}}</td>
+                  <td>{{course.Course_name}}</td>
+                  <td><a href="{{course.resources_link}}" target='_blank'>Resources</a></td>
+                  <td><a href="{{url_for('remove',coursecode=course.course_code)}}">Click Here to Unenroll</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>  
+        </div>
       </div>
       
     </div>

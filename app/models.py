@@ -9,6 +9,12 @@ from datetime import datetime
 def load_user(id):
     return User.query.get(int(id))
 
+
+enrolled=db.Table('Enrolled',
+    db.Column('user_id',db.Integer,db.ForeignKey('user.id')),
+    db.Column('course_id',db.Integer,db.ForeignKey('courses.id'))
+)
+
 class User(UserMixin,db.Model):
     id=db.Column(db.Integer,primary_key=True)
     username=db.Column(db.String(64),index=True,unique=True)
@@ -25,7 +31,6 @@ class User(UserMixin,db.Model):
     birthdate=db.Column(db.String(120),default="N/A")
     Interests=db.Column(db.String(200),default="N/A")
     provides_course=db.relationship('Courses',backref="Teacher",lazy='dynamic')
-    enrolled_in=db.relationship('enrolled',backref="EnrolledIn",lazy='dynamic')
     def __repr__(self):
         return '<Role:{} Name:{} Id:{}>'.format(self.user_role,self.username,self.id)
     def set_password(self,password):
@@ -61,13 +66,17 @@ class Courses(db.Model):
     resources_link=db.Column(db.String(250))
     created=db.Column(db.DateTime,default=datetime.utcnow)
     Instructor_id=db.Column(db.Integer,db.ForeignKey('user.id'))
-    enrolled_=db.relationship('enrolled',backref='course',lazy='dynamic')
+    students_enrolled=db.relationship('User',secondary=enrolled,backref="Courses_enrolled",lazy='dynamic')
     def __repr__(self):
         return '<Course {} made by {}>'.format(self.course_code,self.Instructor_id)
+    def add_student(self, user):
+        if not self.is_student(user):
+            self.students_enrolled.append(user)
 
-class enrolled(db.Model):
-    id=db.Column(db.Integer,primary_key=True)
-    course_id=db.Column(db.Integer,db.ForeignKey('courses.course_code'))
-    Student_id=db.Column(db.Integer,db.ForeignKey('user.id'))
-    def __repr__(self):
-        return 'Student {} enrolled in {}'.format(self.EnrolledIn.username,self.enrolled_.Course_name)
+    def remove_student(self, user):
+        if self.is_student(user):
+            self.students_enrolled.remove(user)
+
+    def is_student(self, user):
+        return self.students_enrolled.filter(
+            enrolled.c.user_id == user.id).count() > 0

@@ -2,7 +2,7 @@ from app import app,forms,db,socketio
 from flask_socketio import emit,leave_room,join_room
 from flask import request,redirect,url_for,render_template,flash,get_flashed_messages,flash,jsonify
 from flask_login import current_user,login_user,logout_user,login_required
-from app.models import User,thread,post
+from app.models import User,thread,post,Courses,enrolled
 from app.forms import LoginForm,RegisterForm
 from werkzeug.urls import url_parse
 from wtforms.validators import ValidationError
@@ -19,6 +19,7 @@ def course():
     return render_template('courses.html',title='Courses')
 
 @app.route('/profile/<username>')
+@login_required
 def profile(username):
     user=User.query.filter_by(username=username).first()
     if user.user_role=="Instructor":
@@ -28,8 +29,20 @@ def profile(username):
     elif user.user_role=="Student" :
         posts=post.query.filter_by(user_id=user.id).all()
         no_posts=len(posts)
-        return render_template('profile_student.html',title=user.username[:3],user=user,no_posts=no_posts,posts=posts)
+        courses=user.Courses_enrolled
+        return render_template('profile_student.html',title=user.username[:3],user=user,no_posts=no_posts,posts=posts,courses=courses)
 
+@app.route('/unenroll/<coursecode>')
+@login_required
+def remove(coursecode):
+    c=Courses.query.filter_by(course_code=coursecode).first()
+    if(c.is_student(current_user)):
+        c.remove_student(current_user)
+        db.session.commit()
+        flash('Successfully Unerolled',category='success')
+        return redirect(url_for('profile',username=current_user.username))
+    else:    
+        return redirect(url_for('profile',username=current_user.username))
 
 
 @app.route('/logout')
@@ -40,6 +53,7 @@ def logout():
     return redirect(url_for('index'))
 
 @app.route('/edit_profile',methods=['POST','GET'])
+@login_required
 def edit_profile():
     if current_user.is_authenticated:
         if request.method=='POST':
@@ -55,6 +69,8 @@ def edit_profile():
             user.birthdate=birthdate
             user.Interests=about
             db.session.commit()
+            flash('Changes Saved Successfully',category='success')
+            return redirect(url_for('profile',username=user.username))
         return render_template('edit_profile.html',)
     else:
         return redirect(url_for('index'))
