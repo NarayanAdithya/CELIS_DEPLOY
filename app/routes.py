@@ -6,6 +6,7 @@ from app.models import User,thread,post
 from app.forms import LoginForm,RegisterForm
 from werkzeug.urls import url_parse
 from wtforms.validators import ValidationError
+from datetime import datetime
 
 @app.route('/')
 @app.route('/index')
@@ -17,19 +18,47 @@ def index():
 def course():
     return render_template('courses.html',title='Courses')
 
-@app.route('/profile/')
-def profile():
-    if current_user.user_role=="Instructor":
-        return render_template('profile_instructor.html',title=current_user.username[:3])
-    elif current_user.user_role=="Student" :
-        return render_template('profile_student.html',title=current_user.username[:3])
+@app.route('/profile/<username>')
+def profile(username):
+    user=User.query.filter_by(username=username).first()
+    if user.user_role=="Instructor":
+        posts=post.query.filter_by(user_id=user.id).all()
+        no_posts=len(posts)
+        return render_template('profile_instructor.html',title=user.username[:3],user=user,no_posts=no_posts,posts=posts)
+    elif user.user_role=="Student" :
+        posts=post.query.filter_by(user_id=user.id).all()
+        no_posts=len(posts)
+        return render_template('profile_student.html',title=user.username[:3],user=user,no_posts=no_posts,posts=posts)
 
 
 
 @app.route('/logout')
 def logout():
+    current_user.last_seen=datetime.utcnow()
+    db.session.commit()
     logout_user()
     return redirect(url_for('index'))
+
+@app.route('/edit_profile',methods=['POST','GET'])
+def edit_profile():
+    if current_user.is_authenticated:
+        if request.method=='POST':
+            twitter_link=request.form['twitter_link']
+            facebook_link=request.form['linkedin_link']
+            instagram_link=request.form['github_link']
+            birthdate=request.form['birthdate']
+            about=request.form['interests']
+            user=User.query.filter_by(id=current_user.id).first()
+            user.twitter=twitter_link
+            user.facebook=facebook_link
+            user.instagram=instagram_link
+            user.birthdate=birthdate
+            user.Interests=about
+            db.session.commit()
+        return render_template('edit_profile.html',)
+    else:
+        return redirect(url_for('index'))
+
 
 
 @app.route('/login',methods=['GET','POST'])

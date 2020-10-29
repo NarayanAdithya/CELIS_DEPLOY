@@ -1,9 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,BooleanField,SubmitField,RadioField,SelectField
-from wtforms.fields.html5 import EmailField
-from wtforms.validators import DataRequired,Email,EqualTo,ValidationError
+from wtforms import StringField,PasswordField,BooleanField,SubmitField,RadioField,SelectField,TextAreaField
+from wtforms.fields.html5 import EmailField,URLField,DateField
+from wtforms.validators import DataRequired,Email,EqualTo,ValidationError,URL
 from app.models import User
-
+from flask_login import current_user,login_user,logout_user,login_required
 class RegisterForm(FlaskForm):
     username=StringField('Username',validators=[DataRequired()],render_kw={'class':'form-control form-group'})
     email=EmailField('Email',validators=[DataRequired(),Email()],render_kw={'class':'form-control form-group'})
@@ -26,3 +26,5 @@ class LoginForm(FlaskForm):
     password=PasswordField('Password',validators=[DataRequired()],render_kw={'class':'form-control form-group'})
     remember_me=BooleanField('Keep Me Signed In')
     submit=SubmitField('Sign In',render_kw={'class':'btn btn-primary','style':'height : 50px;'})
+
+

@@ -1,10 +1,10 @@
 from app import app,db,socketio
-from app.models import User,thread,post
+from app.models import User,thread,post,Courses,enrolled
 
 
 @app.shell_context_processor
 def make_shell_context():
-    return {'db':db,'User':User,'thread':thread,'post':post}
+    return {'db':db,'User':User,'thread':thread,'post':post,'course':Courses,'enrolled':enrolled}
 
 
 if __name__ == '__main__':
