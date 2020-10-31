@@ -2,243 +2,132 @@
 
 {% block body %}
       
-<br>
- <div>
-        <div class="et_pb_code_inner"><h1 style="text-align: center; margin-bottom: 20px; font-weight: 600; font-size: 32px; color: #4d4d4d;">
-  Courses
-</h1>
-
-<div id="courses-switcher-container">
-  <a href="#" class="csw-active">
-    Machine Learning
-  </a>
-  <a href="#">
-    App Development
-  </a>
-  <a href="#">
-    Web DEvelopment
-  </a>
-  <a href="#">
-    Space
-  </a>
-</div>
-
-<style>
-  #courses-switcher-container {
-    background: white;
-    min-height: 60px;
-    min-width: 400px;
-    max-width: 550px;
-    text-align: center;
-    margin: 0 auto;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  #courses-switcher-container a {
-    color: #1e5faf;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 20px;
-    margin: 2px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-  @media (max-width: 980px) {
-    #courses-switcher-container a {
-      font-size: 13px;
-    }
-  }
-  #courses-switcher-container a.csw-active,
-  #courses-switcher-container a:hover {
-    background: linear-gradient(90deg, #1c58a3 -12%, #236dc9 108%);
-    color: white;
-    box-shadow: inset 0px 4px 12px rgba(0, 0, 0, 0.25);
-    border-radius: 14px;
-  }
-</style>
-
-<script>
-  jQuery(document).on("ready", function() {
-    jQuery("#tech-courses-section").hide();
-    jQuery("#design-courses-section").hide();
-    jQuery("#management-courses-section").hide();
-    jQuery("#courses-switcher-container a").on("click", function(e) {
-      e.preventDefault();
-      jQuery("a.csw-active").removeClass("csw-active");
-      jQuery(this).addClass("csw-active");
-      let text = jQuery(this)
-        .text()
-        .trim();
-      if (text === "All") {
-        jQuery("#tech-courses-section").hide();
-        jQuery("#design-courses-section").hide();
-        jQuery("#management-courses-section").hide();
-        jQuery("#all-courses-section").show();
-      } else if (text === "Technology") {
-        jQuery("#tech-courses-section").show();
-        jQuery("#design-courses-section").hide();
-        jQuery("#management-courses-section").hide();
-        jQuery("#all-courses-section").hide();
-      } else if (text === "Humanities") {
-        jQuery("#tech-courses-section").hide();
-        jQuery("#design-courses-section").show();
-        jQuery("#management-courses-section").hide();
-        jQuery("#all-courses-section").hide();
-      } else if (text === "Management") {
-        jQuery("#tech-courses-section").hide();
-        jQuery("#design-courses-section").hide();
-        jQuery("#management-courses-section").show();
-        jQuery("#all-courses-section").hide();
-      }
-    });
-  });
-</script>
-</div>
-<br>
-
-      <!-- cards-->
-
-      <div class="card-deck" id="all-courses-section">
-   <div class="card">
-    <img class="card-img-top" src=".../100px200/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">C12</h5>
-      <a href="#" class="stretched-link"></a>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-   <div class="card">
-    <img class="card-img-top" src=".../100px200/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">C12</h5>
-      <a href="#" class="stretched-link"></a>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-   <div class="card">
-    <img class="card-img-top" src=".../100px200/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">C12</h5>
-      <a href="#" class="stretched-link"></a>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-</div>
-
-<br>
-
-<div class="card-deck" id="tech-courses-section">
-   <div class="card">
-    <img class="card-img-top" src=".../100px200/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">C12</h5>
-      <a href="#" class="stretched-link"></a>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-   <div class="card">
-    <img class="card-img-top" src=".../100px200/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">C12</h5>
-      <a href="#" class="stretched-link"></a>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-    
-  </div>
-   <div class="card">
-    <img class="card-img-top" src=".../100px200/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">C12</h5>
-      <a href="#" class="stretched-link"></a>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-</div>
-
-<br>
-
-<div class="card-deck">
-  <div class="card">
-    <img class="card-img-top" src=".../100px200/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">C12</h5>
-      <a href="#" class="stretched-link"></a>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-   <div class="card">
-    <img class="card-img-top" src=".../100px200/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">C12</h5>
-      <a href="#" class="stretched-link"></a>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src=".../100px200/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">C12</h5>
-      <a href="#" class="stretched-link"></a>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-</div>
- </div>
-
-        <!--Carousel-->
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="d-block w-100" src="../static/images/home/img(11).jpg" alt="First slide">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>...</h5>
-                <p>...</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="../static/images/home/img(11).jpg" alt="Second slide">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>...</h5>
-                <p>...</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="../static/images/home/img(11).jpg" alt="Third slide">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>...</h5>
-                <p>...</p>
-              </div>
-            </div>
+<div class="container">
+    <br>
+    <br>
+    <h1>Enroll in  Courses  by Independent Creators</h1>
+    <br>
+    <div>
+        {% for course in courses %}
+        <div class="card">
+          <h5 class="card-header">{{course.course_code}}</h5>
+          <div class="card-body">
+        
+            <p class="card-text">{{course.Course_name}}</p>
+            <p class="card-text">{{course.Course_Description}}</p>
+            <a href="{{url_for('view_course',course_code=course.course_code)}}" class="btn btn-primary btn-pill">Check Out Course</a>
           </div>
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
         </div>
+        <br>
+        {%endfor%}
+  </div>
+  <br>
+  <br>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Artificial Intelligence</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Web Development</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">App Development</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Course Name</th>
+            <th scope="col">PlatForm</th>
+            <th scope="col">Instructor</th>
+            <th scope="col">Rating</th>
+            <th scope="col">No. of Reviews</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for i in range(len_ai)%}
+          <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{ai['Title'][i]}}</td>
+            <td>Udemy</td>
+            <td>{{ai['Instructors'][i]}}</td>
+            <td>{{ai['Rating'][i]}}</td>
+            <td>{{ai['Reviews'][i]}}</td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Course Name</th>
+            <th scope="col">PlatForm</th>
+            <th scope="col">Instructor</th>
+            <th scope="col">Rating</th>
+            <th scope="col">No. of Reviews</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for i in range(len_web)%}
+          <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{web['Title'][i]}}</td>
+            <td>Udemy</td>
+            <td>{{web['Instructors'][i]}}</td>
+            <td>{{web['Rating'][i]}}</td>
+            <td>{{web['Reviews'][i]}}</td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Course Name</th>
+            <th scope="col">PlatForm</th>
+            <th scope="col">Instructor</th>
+            <th scope="col">Rating</th>
+            <th scope="col">No. of Reviews</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for i in range(len_ai)%}
+          <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{app['Title'][i]}}</td>
+            <td>Udemy</td>
+            <td>{{app['Instructors'][i]}}</td>
+            <td>{{app['Rating'][i]}}</td>
+            <td>{{app['Reviews'][i]}}</td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    </div>
+  </div>
 
 
 
+
+
+
+
+
+
+
+
+
+
+</div>
 
 
 
@@ -255,6 +144,3 @@
 
 
 
-
-    </body>
-</html>

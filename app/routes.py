@@ -7,7 +7,7 @@ from app.forms import LoginForm,RegisterForm,add_course_form
 from werkzeug.urls import url_parse
 from wtforms.validators import ValidationError
 from datetime import datetime
-
+import pickle
 @app.route('/')
 @app.route('/index')
 def index():
@@ -81,7 +81,14 @@ def add_course():
 @app.route('/courses')
 @login_required
 def course():
-    return render_template('courses.html',title='Courses')
+    c=Courses.query.all()
+    with open('app//AI.pickle', 'rb') as handle:
+        ai_courses = pickle.load(handle)
+    with open('app//appdev.pickle', 'rb') as handle:
+        appdev_courses = pickle.load(handle)
+    with open('app//webdev.pickle', 'rb') as handle:
+        webdev_courses = pickle.load(handle)
+    return render_template('courses.html',title='Courses',courses=c,ai=ai_courses,len_ai=len(ai_courses['Title']),web=webdev_courses,len_web=len(webdev_courses['Title']),app=appdev_courses,len_app=len(appdev_courses['Reviews']))
 
 @app.route('/profile/<username>')
 @login_required
