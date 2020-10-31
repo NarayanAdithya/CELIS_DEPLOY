@@ -1,7 +1,14 @@
 {% extends 'template.html' %}
 {% block body %}
+
 <br><br>
 <div class="container">
+  {% if current_user.id==user.id %}
+  <h1>Your Profile</h1>
+  {% else %}
+  <h1>{{user.user_role}} {{user.username}} Profile</h1>
+  {%endif%}
+
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Activity</a>
@@ -63,6 +70,10 @@
                       <td>Number of Posts:</td>
                       <td>{{no_posts}}</td>
                     </tr>
+                    <tr>
+                      <td>Number of Courses:</td>
+                      <td>{{user.provides_course.all()|length}}</td>
+                    </tr>
                   </tbody>
                 </table>
   
@@ -111,7 +122,7 @@
                   <tbody>
                     <tr>
                       <td>
-                        {{current_user.Interests}}
+                        {{user.Interests}}
                       </td>
                     </tr>
                   </tbody>
@@ -128,17 +139,42 @@
         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
           <div class="container">
             <table class="table">
+              
               <thead>
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Course Name</th>
                   <th scope="col">Number of Students Enrolled</th>
                   <th scope="col">Resources GDrive Link</th>
-                  <th scope="col">Delete Course</th>
+                  <th scope="col">Number of Student</th>
                 </tr>
               </thead>
               <tbody>
-          </div>
+              {% if courses %}
+              {%for course in courses%}
+              <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td><a href="{{url_for('view_course',course_code=course.course_code)}}">{{course.course_code}}</a></td>
+                <td>{{course.Course_name}}</td>
+                <td><a href="{{course.resources_link}}" target='_blank'>{{course.resources_link}}</a></td>
+                <td>{{course.students_enrolled.all()|length}}</td>
+                {% if current_user.id==user.id %}
+                <td><a href="{{url_for('edit_course_page',username=current_user.username,course=course.course_code)}}">Click Here to Edit Data</a></td>
+                <td><a href="{{url_for('view_students',course_code=course.course_code)}}">View Students</a></td>
+                {%endif%}
+              </tr>
+              {%endfor%}
+              {%else%}
+              <p>An Error Occures We are Sorry</p>
+              {% endif %}
+              
+            </tbody>
+                
+              </table>
+              {%if current_user.id==user.id%}
+              <a href="{{url_for('add_course')}}"  class="btn btn-primary btn-pill">Add a Course</a>
+              {%endif%}  
+            </div>
         </div>
       </div>
       

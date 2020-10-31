@@ -61,7 +61,7 @@ class post(db.Model):
 class Courses(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     course_code=db.Column(db.String(10),unique=True)
-    Course_name=db.Column(db.String(40))
+    Course_name=db.Column(db.String(100))
     Course_Description=db.Column(db.String(250))
     resources_link=db.Column(db.String(250))
     created=db.Column(db.DateTime,default=datetime.utcnow)

@@ -2,6 +2,13 @@
 {% block body %}
 <br><br>
 <div class="container">
+  {% if current_user.id==user.id %}
+  <h1>Your Profile</h1>
+  {% else %}
+  <h1>{{user.user_role}} {{user.username}} Profile</h1>
+  {%endif%}
+
+  <h1></h1>
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Activity</a>
@@ -111,7 +118,7 @@
                   <tbody>
                     <tr>
                       <td>
-                        {{current_user.Interests}}
+                        {{user.Interests}}
                       </td>
                     </tr>
                   </tbody>
@@ -143,7 +150,9 @@
                   <td>{{course.course_code}}</td>
                   <td>{{course.Course_name}}</td>
                   <td><a href="{{course.resources_link}}" target='_blank'>Resources</a></td>
+                  {%if current_user.id==user.id%}
                   <td><a href="{{url_for('remove',coursecode=course.course_code)}}">Click Here to Unenroll</a></td>
+                  {%endif%}
                 </tr>
                 {% endfor %}
               </tbody>

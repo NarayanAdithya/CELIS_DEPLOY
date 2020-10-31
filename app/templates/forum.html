@@ -55,7 +55,7 @@
            }
            else {
              console.log('Not matching');
-             var actual="<div class=\"notuser\" id=\"postof"+data['post_id']+"\"><span><strong><u>"+data['username']+"</u></strong></span><p>"+data['msg']+"</p></div>";
+             var actual="<div class=\"notuser\" id=\"postof"+data['post_id']+"\"><span><strong><u>"+data['username']+"</u></strong><a target=\"_blank\" href='/profile/"+data['username']+"'>View Profile</a></span><p>"+data['msg']+"</p></div>";
              document.getElementById('posts').innerHTML+=actual;
            }
 
@@ -104,7 +104,7 @@
     </div>
     {% else %}
     <div class="notuser" id="postof{{post.id}}">
-      <span><strong><u>{{post.Author.username}}</u></strong></span>
+      <span><strong><u>{{post.Author.username}}</u></strong><a target="_blank" href="{{url_for('profile',username=post.Author.username)}}">View Profile</a></span>
 
       <p>{{post.message}}</p>
     </div>
